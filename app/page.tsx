@@ -6,14 +6,11 @@ import { useSeasonEpisodes } from "./hooks/useEpisodes";
 import { Episode } from "./types";
 import LoadingSpinner from "./components/LoadingSpinner";
 import EpisodeList from "./components/EpisodeList";
-import ShowInfo from "./components/ShowInfo";
+// import ShowInfo from "./components/ShowInfo";
 import SeasonTabs from "./components/SeasonTabs";
+import { ShowInfo } from "./components/ShowInfo/index";
 
 // Types for the tabs and seasons
-type TabType = "general" | "elenco" | "premios";
-// We'll use a regular number now instead of a union type
-// since we'll have dynamic number of seasons
-// type SeasonNumber = 1 | 2 | 3;
 
 // Component for the close button
 const CloseButton = () => (
@@ -37,7 +34,6 @@ export default function Home() {
   // State management - changed to number instead of SeasonNumber type
   const [selectedSeason, setSelectedSeason] = useState<number>(1);
   const [selectedEpisode, setSelectedEpisode] = useState<Episode | null>(null);
-  const [activeTab, setActiveTab] = useState<TabType>("general");
 
   // Data fetching with React Query hooks
   const { data: show, isLoading: isLoadingShow } = useShow();
@@ -98,12 +94,8 @@ export default function Home() {
           <div className="absolute bottom-[150px] sm:bottom-[180px] md:bottom-[225px] left-0 right-0 h-[80px] sm:h-[100px] bg-gradient-to-b from-transparent to-black" />
 
           {/* Show info section at bottom */}
-          <div className="absolute bottom-0 left-0 pb-4 base:pb-0 right-0 bg-black h-[250px] z-30">
-            <ShowInfo
-              show={show}
-              activeTab={activeTab}
-              onTabChange={setActiveTab}
-            />
+          <div className="absolute bottom-0 left-0 pb-4 base:pb-0 md:pb-0 lg:pb-0 right-0 bg-black h-[250px] z-30">
+            <ShowInfo show={show} />
           </div>
         </div>
 
