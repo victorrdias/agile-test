@@ -16,7 +16,7 @@ interface TVShowResponse {
   Year: number;
   Genres: { Title: string }[];
   Images: { Background: string };
-  Cast: { Name: string }[];
+  Cast: { ID: string; Name: string }[];
 }
 
 /**
@@ -24,42 +24,17 @@ interface TVShowResponse {
  * @param response - The response from the API
  * @returns The transformed Show object
  */
+
 function transformShowData(response: TVShowResponse): Show {
-  // Sample cast members to match the design shown in the image
-  const sampleCast = [
-    {
-      id: 1,
-      name: "Matt Damon",
-      character: "Mark Watney",
-      image: "https://ui-avatars.com/api/?name=Matt+Damon&background=random",
-    },
-    {
-      id: 2,
-      name: "Jessica Chastain",
-      character: "Melissa Lewis",
-      image:
-        "https://ui-avatars.com/api/?name=Jessica+Chastain&background=random",
-    },
-    {
-      id: 3,
-      name: "Chiwetel Ejiofor",
-      character: "Vincent Kapoor",
-      image:
-        "https://ui-avatars.com/api/?name=Chiwetel+Ejiofor&background=random",
-    },
-    {
-      id: 4,
-      name: "Personagem",
-      character: "Ator ou atriz",
-      image: "https://ui-avatars.com/api/?name=Personagem&background=random",
-    },
-    {
-      id: 5,
-      name: "Personagem",
-      character: "Ator ou atriz",
-      image: "https://ui-avatars.com/api/?name=Personagem&background=random",
-    },
-  ];
+  // Transform cast data from API
+  const cast = response.Cast.map((castMember) => ({
+    id:
+      parseInt(castMember.ID.replace("PER-", "")) ||
+      Math.floor(Math.random() * 1000),
+    name: castMember.Name,
+    character: "Unknown Character", // Since API doesn't provide character names
+    // No image property as it's now optional
+  }));
 
   return {
     id: response.ID,
@@ -67,12 +42,11 @@ function transformShowData(response: TVShowResponse): Show {
     description: response.Synopsis,
     releaseYear: response.Year,
     genre: response.Genres.map((g) => g.Title).join(", "),
-    rating: "TV-MA", // Hardcoded as it's not in the API
+    rating: "4.35 estrelas", // Hardcoded as it's not in the API
     duration: "3 Seasons", // Hardcoded based on the episodes data
     backgroundImage: response.Images.Background,
     seasons: 3, // Hardcoded based on the available seasons
-    // Use our sample cast instead of generating from API data
-    cast: sampleCast,
+    cast: cast,
   };
 }
 

@@ -13,7 +13,7 @@ export interface CastMember {
   id: number;
   name: string;
   character: string;
-  image: string;
+  image?: string;
 }
 
 export interface Award {

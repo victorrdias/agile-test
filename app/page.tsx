@@ -17,7 +17,7 @@ const ShowTitleSection = ({ show }: { show: Show }) => (
   <div className="absolute top-0 left-0 ml-10 p-10 z-10">
     <h1 className="text-5xl font-bold text-white">{show.title}</h1>
     <p className="text-white/80 text-sm mt-1">
-      {show.genre.toUpperCase()} {show.releaseYear}
+      {show.genre.toUpperCase()} / {show.releaseYear} / {show.rating}
     </p>
   </div>
 );
