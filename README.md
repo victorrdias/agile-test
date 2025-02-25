@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TV Show Details Application
 
-## Getting Started
+This is a web application for displaying TV show details, including information about the show, seasons, episodes, and cast.
 
-First, run the development server:
+## Features
+
+- Full screen overlay design
+- Show details fetched from API
+- Episodes listing with thumbnails and descriptions
+- Season navigation
+- Cast section with carousel navigation
+- Episode selection with details view
+- Responsive UI with animations
+
+## Technologies Used
+
+- Next.js 14 (App Router)
+- React 18
+- TypeScript
+- TailwindCSS (CSS Framework)
+- React Query (Data Fetching)
+- Framer Motion (Animations)
+- Axios (HTTP Client)
+
+## Prerequisites
+
+- Node.js 18 or later
+- npm or yarn
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/tv-show-details.git
+cd tv-show-details
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+## Running the Application
+
+1. Start the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Open your browser and navigate to:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Building for Production
 
-## Learn More
+1. Create a production build:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+# or
+yarn build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Start the production server:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm start
+# or
+yarn start
+```
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `/app` - Main application code
+  - `/components` - React components
+  - `/hooks` - Custom React hooks for data fetching
+  - `/types` - TypeScript type definitions
+  - `page.tsx` - Main page component
+  - `layout.tsx` - Layout component
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## API Endpoints
+
+The application fetches data from the following APIs:
+
+- TV Show Data: `https://agile-releases.s3.us-east-1.amazonaws.com/tests/tv-shows/SHOW123.json`
+- Episodes Data: `https://agile-releases.s3.us-east-1.amazonaws.com/tests/episodes/SHOW123.json`
+
+## License
+
+MIT
