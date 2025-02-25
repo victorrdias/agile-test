@@ -7,10 +7,13 @@ import { Episode, Show } from "./types";
 import LoadingSpinner from "./components/LoadingSpinner";
 import EpisodeList from "./components/EpisodeList";
 import ShowInfo from "./components/ShowInfo";
+import SeasonTabs from "./components/SeasonTabs";
 
 // Types for the tabs and seasons
 type TabType = "general" | "elenco" | "premios";
-type SeasonNumber = 1 | 2 | 3;
+// We'll use a regular number now instead of a union type
+// since we'll have dynamic number of seasons
+// type SeasonNumber = 1 | 2 | 3;
 
 // Component for the show title and metadata
 const ShowTitleSection = ({ show }: { show: Show }) => (
@@ -19,31 +22,6 @@ const ShowTitleSection = ({ show }: { show: Show }) => (
     <p className="text-white/80 text-sm mt-1">
       {show.genre.toUpperCase()} / {show.releaseYear} / {show.rating}
     </p>
-  </div>
-);
-
-// Component for season tabs
-const SeasonTabs = ({
-  selectedSeason,
-  onSeasonChange,
-}: {
-  selectedSeason: SeasonNumber;
-  onSeasonChange: (season: SeasonNumber) => void;
-}) => (
-  <div className="flex space-x-2 font-bold px-14">
-    {[1, 2, 3].map((season) => (
-      <button
-        key={season}
-        className={`${
-          selectedSeason === season
-            ? "text-white border-b-2 border-emerald-500"
-            : "text-white/60"
-        } px-3 text-base`}
-        onClick={() => onSeasonChange(season as SeasonNumber)}
-      >
-        T{season}
-      </button>
-    ))}
   </div>
 );
 
@@ -66,8 +44,8 @@ const CloseButton = () => (
 );
 
 export default function Home() {
-  // State management
-  const [selectedSeason, setSelectedSeason] = useState<SeasonNumber>(1);
+  // State management - changed to number instead of SeasonNumber type
+  const [selectedSeason, setSelectedSeason] = useState<number>(1);
   const [selectedEpisode, setSelectedEpisode] = useState<Episode | null>(null);
   const [activeTab, setActiveTab] = useState<TabType>("general");
 
@@ -76,8 +54,8 @@ export default function Home() {
   const { data: episodes, isLoading: isLoadingEpisodes } =
     useSeasonEpisodes(selectedSeason);
 
-  // Handle season change
-  const handleSeasonChange = (season: SeasonNumber) => {
+  // Handle season change - changed type to number
+  const handleSeasonChange = (season: number) => {
     setSelectedSeason(season);
     setSelectedEpisode(null); // Reset selected episode when changing seasons
   };
@@ -142,11 +120,14 @@ export default function Home() {
           <div className="h-full flex flex-col">
             {/* Header with season tabs */}
             <div className="flex justify-between items-center px-4 py-4 mt-14">
-              {/* Season tabs */}
-              <SeasonTabs
-                selectedSeason={selectedSeason}
-                onSeasonChange={handleSeasonChange}
-              />
+              {/* Season tabs - now using the imported SeasonTabs component with dynamic season count */}
+              <div className="px-14">
+                <SeasonTabs
+                  totalSeasons={show.seasons}
+                  currentSeason={selectedSeason}
+                  onSeasonChange={handleSeasonChange}
+                />
+              </div>
             </div>
 
             {/* Episodes list with padding to prevent overlap with footer */}
