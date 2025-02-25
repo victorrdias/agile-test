@@ -15,22 +15,12 @@ type TabType = "general" | "elenco" | "premios";
 // since we'll have dynamic number of seasons
 // type SeasonNumber = 1 | 2 | 3;
 
-// Component for the show title and metadata
-const ShowTitleSection = ({ show }: { show: Show }) => (
-  <div className="absolute top-0 left-0 ml-10 p-10 z-10">
-    <h1 className="text-5xl font-bold text-white">{show.title}</h1>
-    <p className="text-white/80 text-sm mt-1">
-      {show.genre.toUpperCase()} / {show.releaseYear} / {show.rating}
-    </p>
-  </div>
-);
-
 // Component for the close button
 const CloseButton = () => (
   <button className="text-white/80 hover:text-white">
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-8 w-8"
+      className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
       viewBox="0 0 20 20"
       fill="currentColor"
     >
@@ -90,17 +80,24 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-black/30 to-black/70" />
 
             {/* Additional right side dark gradient for text readability */}
-            <div className="absolute right-0 top-0 bottom-0 w-[600px] bg-gradient-to-l from-black/80 via-black/40 to-transparent pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-full sm:w-[50%] md:w-[600px] bg-gradient-to-l from-black/80 via-black/40 to-transparent pointer-events-none" />
           </div>
 
           {/* Show Title and Metadata */}
-          <ShowTitleSection show={show} />
+          <div className="absolute top-0 left-0 ml-3 sm:ml-6 md:ml-10 p-4 sm:p-6 md:p-10 z-10">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+              {show.title}
+            </h1>
+            <p className="text-white/80 text-xs sm:text-sm mt-1">
+              {show.genre.toUpperCase()} / {show.releaseYear} / {show.rating}
+            </p>
+          </div>
 
           {/* Gradient transition to black footer */}
-          <div className="absolute bottom-[225px] left-0 right-0 h-[100px] bg-gradient-to-b from-transparent to-black" />
+          <div className="absolute bottom-[150px] sm:bottom-[180px] md:bottom-[225px] left-0 right-0 h-[80px] sm:h-[100px] bg-gradient-to-b from-transparent to-black" />
 
           {/* Show info section at bottom */}
-          <div className="absolute bottom-0 left-0 right-0 bg-black h-[225px] z-30">
+          <div className="absolute bottom-0 left-0 right-0 bg-black h-[150px] sm:h-[180px] md:h-[225px] z-30">
             <ShowInfo
               show={show}
               activeTab={activeTab}
@@ -110,18 +107,18 @@ export default function Home() {
         </div>
 
         {/* Episode list sidebar */}
-        <div className="absolute right-0 top-0 bottom-0 w-[600px] flex flex-col pointer-events-auto z-20">
+        <div className="absolute right-0 top-0 bottom-0 w-full sm:w-[80%] md:w-[600px] flex flex-col pointer-events-auto z-20 transform transition-transform duration-300 ease-in-out">
           {/* Close button at top right */}
-          <div className="absolute top-6 right-6 z-40">
+          <div className="absolute top-3 sm:top-4 md:top-6 right-3 sm:right-4 md:right-6 z-40">
             <CloseButton />
           </div>
 
           {/* Content directly on the background */}
           <div className="h-full flex flex-col">
             {/* Header with season tabs */}
-            <div className="flex justify-between items-center px-4 py-4 mt-14">
+            <div className="flex justify-between items-center px-2 sm:px-3 md:px-4 py-2 sm:py-3 md:py-4 mt-10 sm:mt-12 md:mt-14">
               {/* Season tabs - now using the imported SeasonTabs component with dynamic season count */}
-              <div className="px-14">
+              <div className="px-4 sm:px-8 md:px-14 mt-20  lg:mt-0">
                 <SeasonTabs
                   totalSeasons={show.seasons}
                   currentSeason={selectedSeason}
@@ -131,7 +128,7 @@ export default function Home() {
             </div>
 
             {/* Episodes list with padding to prevent overlap with footer */}
-            <div className="flex-1 overflow-y-auto px-20 pb-[250px]">
+            <div className="flex-1 overflow-y-auto px-4 sm:px-10 md:px-20 pb-[200px] sm:pb-[220px] md:pb-[250px]">
               <EpisodeList
                 episodes={episodes || []}
                 onEpisodeClick={setSelectedEpisode}

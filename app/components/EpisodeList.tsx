@@ -73,7 +73,7 @@ export default function EpisodeList({
           <motion.button
             onClick={() => onEpisodeClick(episode)}
             className={clsx(
-              "w-full text-left flex items-center gap-4 py-3 transition-colors duration-200",
+              "w-full text-left flex items-center gap-2 sm:gap-3 md:gap-4 py-2 md:py-3 transition-colors duration-200",
               selectedEpisode?.id === episode.id
                 ? "text-white"
                 : "text-white/90"
@@ -81,17 +81,17 @@ export default function EpisodeList({
             whileHover={{ x: 3 }}
             whileTap={{ scale: 0.98 }}
           >
-            <span className="text-white/60 text-base min-w-[20px]">
+            <span className="text-white/60 text-sm md:text-base min-w-[16px] md:min-w-[20px]">
               {episode.episodeNumber}
             </span>
-            <span className="flex-1 text-base truncate font-semibold">
+            <span className="flex-1 text-sm md:text-base truncate font-semibold">
               {episode.title}
             </span>
             <motion.div
               className="text-white/80"
               whileHover={{ scale: 1.2, rotate: 10 }}
             >
-              <PlayIcon className="w-6 h-6" />
+              <PlayIcon className="w-5 h-5 md:w-6 md:h-6" />
             </motion.div>
           </motion.button>
 
@@ -109,7 +109,7 @@ export default function EpisodeList({
                 opacity: { duration: 0.2 },
               }}
             >
-              <div className="mt-3 px-6">
+              <div className="mt-2 md:mt-3 px-2 sm:px-4 md:px-6">
                 <div className="relative aspect-video rounded overflow-hidden">
                   <motion.div
                     className="w-full h-full"
@@ -125,7 +125,7 @@ export default function EpisodeList({
                     />
                   </motion.div>
                   {/* Progress bar */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-black/30">
+                  <div className="absolute bottom-0 left-0 right-0 h-1 md:h-1.5 bg-black/30">
                     <motion.div
                       className="h-full bg-emerald-500"
                       initial={{ width: 0 }}
@@ -139,7 +139,7 @@ export default function EpisodeList({
                   </div>
                 </div>
                 <motion.p
-                  className="text-base text-white/80 mt-3 leading-relaxed"
+                  className="text-sm md:text-base text-white/80 mt-2 md:mt-3 leading-relaxed"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}

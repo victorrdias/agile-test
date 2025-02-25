@@ -12,13 +12,13 @@ export default function SeasonTabs({
   onSeasonChange,
 }: SeasonTabsProps) {
   return (
-    <div className="flex gap-6 mb-4">
+    <div className="flex overflow-x-auto md:overflow-visible gap-3 sm:gap-4 md:gap-6 mb-4 pb-1 scrollbar-hide">
       {Array.from({ length: totalSeasons }, (_, i) => i + 1).map((season) => (
         <button
           key={season}
           onClick={() => onSeasonChange(season)}
           className={clsx(
-            "text-sm font-medium transition-all duration-200 px-1",
+            "text-sm font-medium transition-all duration-200 px-1 flex-shrink-0",
             currentSeason === season
               ? "text-white border-b-2 border-white"
               : "text-white/50 hover:text-white/80"

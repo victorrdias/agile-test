@@ -184,17 +184,17 @@ export default function ShowInfo({
   }, [activeTab]);
 
   return (
-    <div className="flex flex-col px-12 h-full">
+    <div className="flex flex-col px-3 sm:px-6 md:px-12 h-full">
       {/* Header with tabs at the top */}
-      <div className="bg-black px-8 pt-6">
+      <div className="bg-black px-2 sm:px-4 md:px-8 pt-4 md:pt-6">
         <div className="flex items-center border-b border-gray-800">
-          <div className="flex pt-4">
+          <div className="flex pt-2 md:pt-4 overflow-x-auto scrollbar-hide">
             {tabs.map((tab) => (
               <motion.button
                 key={tab.id}
                 onClick={() => onTabChange(tab.id)}
                 className={clsx(
-                  "text-base font-medium tracking-wide pb-2 px-6 relative transition-colors",
+                  "text-sm md:text-base font-medium tracking-wide pb-2 px-3 sm:px-4 md:px-6 relative transition-colors whitespace-nowrap",
                   activeTab === tab.id
                     ? "text-white"
                     : "text-gray-400 hover:text-gray-200"
@@ -215,7 +215,7 @@ export default function ShowInfo({
             ))}
           </div>
           <div className="ml-auto">
-            <div className="bg-white text-black text-sm px-2 my-1 font-bold tracking-wider">
+            <div className="bg-white text-black text-xs sm:text-sm px-1 sm:px-2 my-1 font-bold tracking-wider">
               TELE
               <br />
               CINE
@@ -229,7 +229,7 @@ export default function ShowInfo({
         <AnimatePresence mode="wait">
           {activeTab === "general" && (
             <motion.div
-              className="flex w-full px-8"
+              className="flex flex-col sm:flex-row w-full px-2 sm:px-4 md:px-8"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
@@ -237,7 +237,7 @@ export default function ShowInfo({
               key="general"
             >
               {/* Action buttons - left side */}
-              <div className="flex gap-8">
+              <div className="flex justify-center sm:justify-start gap-4 sm:gap-6 md:gap-8 mb-4 sm:mb-0">
                 <motion.button
                   className="flex flex-col items-center gap-1.5"
                   whileHover={{ scale: 1.05 }}
@@ -245,19 +245,19 @@ export default function ShowInfo({
                   onClick={handleMyListClick}
                 >
                   <div
-                    className={`w-14 h-14 rounded-full border ${
+                    className={`w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full border ${
                       inMyList
                         ? "border-emerald-500 bg-emerald-500/10"
                         : "border-white/80"
                     } flex items-center justify-center transition-colors`}
                   >
                     {inMyList ? (
-                      <CheckIcon className="w-7 h-7 text-emerald-500" />
+                      <CheckIcon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-emerald-500" />
                     ) : (
-                      <PlusIcon className="w-7 h-7" />
+                      <PlusIcon className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
                     )}
                   </div>
-                  <span className="text-xs font-medium tracking-wide">
+                  <span className="text-[10px] sm:text-xs font-medium tracking-wide">
                     Mi Lista
                   </span>
                 </motion.button>
@@ -269,19 +269,19 @@ export default function ShowInfo({
                   onClick={handleRatingClick}
                 >
                   <div
-                    className={`w-14 h-14 rounded-full border ${
+                    className={`w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full border ${
                       ratingValue > 0
                         ? "border-yellow-400 bg-yellow-400/10"
                         : "border-white/80"
                     } flex items-center justify-center transition-colors`}
                   >
                     <StarIcon
-                      className={`w-7 h-7 ${
+                      className={`w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 ${
                         ratingValue > 0 ? "text-yellow-400 fill-yellow-400" : ""
                       }`}
                     />
                   </div>
-                  <span className="text-xs font-medium tracking-wide">
+                  <span className="text-[10px] sm:text-xs font-medium tracking-wide">
                     Evaluar
                   </span>
                 </motion.button>
@@ -293,7 +293,7 @@ export default function ShowInfo({
                   onClick={handleRecordingClick}
                 >
                   <div
-                    className={`w-14 h-14 rounded-full border ${
+                    className={`w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full border ${
                       isRecording
                         ? "border-red-500 bg-red-500/10"
                         : "border-white/80"
@@ -305,7 +305,7 @@ export default function ShowInfo({
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke={isRecording ? "rgb(239, 68, 68)" : "currentColor"}
-                      className="w-7 h-7"
+                      className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7"
                     >
                       <path
                         strokeLinecap="round"
