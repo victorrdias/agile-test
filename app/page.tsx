@@ -5,7 +5,7 @@ import { useShow } from "./hooks/useShow";
 import { useSeasonEpisodes } from "./hooks/useEpisodes";
 import { Episode } from "./types";
 import LoadingSpinner from "./components/LoadingSpinner";
-import EpisodeList from "./components/EpisodeList";
+import EpisodeList from "./components/EpisodeList/index";
 // import ShowInfo from "./components/ShowInfo";
 import SeasonTabs from "./components/SeasonTabs";
 import { ShowInfo } from "./components/ShowInfo/index";
