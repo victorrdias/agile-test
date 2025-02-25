@@ -97,7 +97,7 @@ export default function Home() {
           <div className="absolute bottom-[150px] sm:bottom-[180px] md:bottom-[225px] left-0 right-0 h-[80px] sm:h-[100px] bg-gradient-to-b from-transparent to-black" />
 
           {/* Show info section at bottom */}
-          <div className="absolute bottom-0 left-0 right-0 bg-black h-[200px] sm:h-[180px] md:h-[225px] z-30">
+          <div className="absolute bottom-0 left-0 right-0 bg-black h-[280px] sm:h-[250px] md:h-[300px] lg:h-[250px] z-30">
             <ShowInfo
               show={show}
               activeTab={activeTab}

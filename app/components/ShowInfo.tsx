@@ -38,7 +38,7 @@ export default function ShowInfo({
   const tabs = [
     { id: "general", label: "GENERAL" },
     { id: "elenco", label: "ELENCO" },
-    { id: "premios", label: "PRINCIPALES PREMIOS" },
+    { id: "premios", label: "PREMIOS" },
   ] as const;
 
   // Reference to the cast carousel container
@@ -237,9 +237,9 @@ export default function ShowInfo({
               key="general"
             >
               {/* Action buttons - left side */}
-              <div className="flex justify-center sm:justify-start gap-4 sm:gap-6 md:gap-8 mb-4 sm:mb-0">
+              <div className="flex justify-center sm:justify-start gap-4 sm:gap-6 md:gap-8 mb-4 sm:mb-0 w-full sm:w-auto">
                 <motion.button
-                  className="flex flex-col items-center gap-1.5"
+                  className="flex flex-col items-center gap-1"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={handleMyListClick}
@@ -263,7 +263,7 @@ export default function ShowInfo({
                 </motion.button>
 
                 <motion.button
-                  className="flex flex-col items-center gap-1.5"
+                  className="flex flex-col items-center gap-1"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={handleRatingClick}
@@ -287,7 +287,7 @@ export default function ShowInfo({
                 </motion.button>
 
                 <motion.button
-                  className="flex flex-col items-center gap-1.5"
+                  className="flex flex-col items-center gap-1"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={handleRecordingClick}
@@ -314,19 +314,19 @@ export default function ShowInfo({
                       />
                     </svg>
                   </div>
-                  <span className="text-xs font-medium tracking-wide">
+                  <span className="text-[10px] sm:text-xs font-medium tracking-wide">
                     Grabar
                   </span>
                 </motion.button>
 
                 <motion.button
-                  className="flex flex-col items-center gap-1.5"
+                  className="flex flex-col items-center gap-1"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={handleShareClick}
                 >
                   <div
-                    className={`w-14 h-14 rounded-full border ${
+                    className={`w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full border ${
                       shareOpen
                         ? "border-blue-400 bg-blue-400/10"
                         : "border-white/80"
@@ -338,7 +338,7 @@ export default function ShowInfo({
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke={shareOpen ? "rgb(96, 165, 250)" : "currentColor"}
-                      className="w-7 h-7"
+                      className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7"
                     >
                       <path
                         strokeLinecap="round"
@@ -347,7 +347,7 @@ export default function ShowInfo({
                       />
                     </svg>
                   </div>
-                  <span className="text-xs font-medium tracking-wide">
+                  <span className="text-[10px] sm:text-xs font-medium tracking-wide">
                     Compartir
                   </span>
                 </motion.button>
@@ -360,33 +360,36 @@ export default function ShowInfo({
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
-                    className="absolute left-0 right-0 mx-auto bottom-44 bg-gray-900 p-4 rounded-lg shadow-lg"
-                    style={{ width: "fit-content" }}
+                    className="absolute left-0 right-0 mx-auto bottom-20 sm:bottom-32 md:bottom-44 bg-gray-900 p-3 sm:p-4 rounded-lg shadow-lg z-50"
+                    style={{
+                      width: "fit-content",
+                      maxWidth: "calc(100% - 32px)",
+                    }}
                   >
                     <div className="flex flex-col gap-2 items-center">
-                      <span className="text-white/90 text-sm mb-2 text-center">
+                      <span className="text-white/90 text-xs sm:text-sm mb-1 sm:mb-2 text-center">
                         {inMyList ? "Ya en tu lista:" : "Añadir a tu lista:"}
                       </span>
-                      <div className="flex gap-4">
+                      <div className="flex gap-2 sm:gap-4">
                         {inMyList ? (
                           <button
                             onClick={handleRemoveFromList}
-                            className="bg-emerald-600 text-white px-4 py-2 rounded text-xs flex items-center gap-2"
+                            className="bg-emerald-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded text-xs flex items-center gap-2"
                           >
                             <span>Quitar de Mi Lista</span>
                           </button>
                         ) : (
                           <button
                             onClick={handleAddToList}
-                            className="bg-emerald-600 text-white px-4 py-2 rounded text-xs flex items-center gap-2"
+                            className="bg-emerald-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded text-xs flex items-center gap-2"
                           >
-                            <PlusIcon className="w-4 h-4" />
+                            <PlusIcon className="w-3 h-3 sm:w-4 sm:h-4" />
                             <span>Añadir a Mi Lista</span>
                           </button>
                         )}
                         <button
                           onClick={() => setMyListOpen(false)}
-                          className="bg-gray-700 text-white px-4 py-2 rounded text-xs"
+                          className="bg-gray-700 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded text-xs"
                         >
                           Cancelar
                         </button>
@@ -403,11 +406,14 @@ export default function ShowInfo({
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
-                    className="absolute left-0 right-0 mx-auto bottom-44 bg-gray-900 p-4 rounded-lg shadow-lg"
-                    style={{ width: "fit-content" }}
+                    className="absolute left-0 right-0 mx-auto bottom-20 sm:bottom-32 md:bottom-44 bg-gray-900 p-3 sm:p-4 rounded-lg shadow-lg z-50"
+                    style={{
+                      width: "fit-content",
+                      maxWidth: "calc(100% - 32px)",
+                    }}
                   >
-                    <div className="flex items-center gap-3">
-                      <span className="text-white/90 text-sm">
+                    <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
+                      <span className="text-white/90 text-xs sm:text-sm">
                         Califica este título:
                       </span>
                       <div className="flex">
@@ -418,7 +424,7 @@ export default function ShowInfo({
                             className="p-1"
                           >
                             <StarIcon
-                              className={`w-6 h-6 ${
+                              className={`w-5 h-5 sm:w-6 sm:h-6 ${
                                 star <= ratingValue
                                   ? "text-yellow-400 fill-yellow-400"
                                   : "text-white/60"
@@ -439,27 +445,30 @@ export default function ShowInfo({
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
-                    className="absolute left-0 right-0 mx-auto bottom-44 bg-gray-900 p-4 rounded-lg shadow-lg"
-                    style={{ width: "fit-content" }}
+                    className="absolute left-0 right-0 mx-auto bottom-20 sm:bottom-32 md:bottom-44 bg-gray-900 p-3 sm:p-4 rounded-lg shadow-lg z-50"
+                    style={{
+                      width: "fit-content",
+                      maxWidth: "calc(100% - 32px)",
+                    }}
                   >
                     <div className="flex flex-col gap-2 items-center">
-                      <span className="text-white/90 text-sm mb-2 text-center">
+                      <span className="text-white/90 text-xs sm:text-sm mb-1 sm:mb-2 text-center">
                         {isRecording
                           ? "Grabación programada:"
                           : "Programar grabación:"}
                       </span>
-                      <div className="flex gap-4">
+                      <div className="flex gap-2 sm:gap-4">
                         {isRecording ? (
                           <button
                             onClick={handleCancelRecording}
-                            className="bg-red-600 text-white px-4 py-2 rounded text-xs flex items-center gap-2"
+                            className="bg-red-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded text-xs flex items-center gap-2"
                           >
                             <span>Cancelar Grabación</span>
                           </button>
                         ) : (
                           <button
                             onClick={handleStartRecording}
-                            className="bg-red-600 text-white px-4 py-2 rounded text-xs flex items-center gap-2"
+                            className="bg-red-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded text-xs flex items-center gap-2"
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -467,7 +476,7 @@ export default function ShowInfo({
                               viewBox="0 0 24 24"
                               strokeWidth={1.5}
                               stroke="currentColor"
-                              className="w-4 h-4"
+                              className="w-3 h-3 sm:w-4 sm:h-4"
                             >
                               <path
                                 strokeLinecap="round"
@@ -480,7 +489,7 @@ export default function ShowInfo({
                         )}
                         <button
                           onClick={() => setRecordingOpen(false)}
-                          className="bg-gray-700 text-white px-4 py-2 rounded text-xs"
+                          className="bg-gray-700 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded text-xs"
                         >
                           Cancelar
                         </button>
@@ -497,20 +506,23 @@ export default function ShowInfo({
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
-                    className="absolute left-0 right-0 mx-auto bottom-44 bg-gray-900 p-4 rounded-lg shadow-lg"
-                    style={{ width: "fit-content" }}
+                    className="absolute left-0 right-0 mx-auto bottom-20 sm:bottom-32 md:bottom-44 bg-gray-900 p-3 sm:p-4 rounded-lg shadow-lg z-50"
+                    style={{
+                      width: "fit-content",
+                      maxWidth: "calc(100% - 32px)",
+                    }}
                   >
                     <div className="flex flex-col gap-2">
-                      <span className="text-white/90 text-sm mb-2 text-center">
+                      <span className="text-white/90 text-xs sm:text-sm mb-1 sm:mb-2 text-center">
                         Compartir con:
                       </span>
-                      <div className="flex gap-4">
+                      <div className="flex gap-2 sm:gap-4">
                         <button
                           onClick={() => {
                             showToast("Compartido en Facebook", "sharing");
                             setShareOpen(false);
                           }}
-                          className="bg-blue-600 text-white px-3 py-1.5 rounded text-xs"
+                          className="bg-blue-600 text-white px-2 sm:px-3 py-1 sm:py-1.5 rounded text-xs"
                         >
                           Facebook
                         </button>
@@ -519,7 +531,7 @@ export default function ShowInfo({
                             showToast("Compartido en Twitter", "sharing");
                             setShareOpen(false);
                           }}
-                          className="bg-sky-500 text-white px-3 py-1.5 rounded text-xs"
+                          className="bg-sky-500 text-white px-2 sm:px-3 py-1 sm:py-1.5 rounded text-xs"
                         >
                           Twitter
                         </button>
@@ -528,7 +540,7 @@ export default function ShowInfo({
                             showToast("Compartido por Email", "sharing");
                             setShareOpen(false);
                           }}
-                          className="bg-gray-600 text-white px-3 py-1.5 rounded text-xs"
+                          className="bg-gray-600 text-white px-2 sm:px-3 py-1 sm:py-1.5 rounded text-xs"
                         >
                           Email
                         </button>
@@ -539,11 +551,21 @@ export default function ShowInfo({
               </AnimatePresence>
 
               {/* Synopsis section - right side */}
-              <div className="ml-auto max-w-[50%]">
+              <div className="hidden sm:block ml-auto max-w-[50%]">
                 <h3 className="text-sm uppercase tracking-wide mb-1 text-white/80">
                   SINOPSE
                 </h3>
-                <p className="text-base leading-relaxed text-white/90">
+                <p className="text-base leading-relaxed overflow-hidden text-white/90">
+                  {show.description}
+                </p>
+              </div>
+
+              {/* Mobile synopsis */}
+              <div className="sm:hidden w-full mt-1">
+                <h3 className="text-xs uppercase tracking-wide mb-1 text-white/80">
+                  SINOPSE
+                </h3>
+                <p className="text-sm leading-tight text-white/90 line-clamp-3">
                   {show.description}
                 </p>
               </div>
@@ -557,9 +579,9 @@ export default function ShowInfo({
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
-                className={`fixed bottom-8 left-0 right-0 mx-auto w-auto max-w-md z-50 ${getToastBgColor(
+                className={`fixed bottom-4 sm:bottom-6 md:bottom-8 left-0 right-0 mx-auto w-auto max-w-[90%] sm:max-w-md z-50 ${getToastBgColor(
                   toast.type
-                )} text-white px-6 py-3 rounded-lg shadow-lg text-center`}
+                )} text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg shadow-lg text-center text-xs sm:text-sm`}
                 style={{ width: "fit-content" }}
               >
                 {toast.message}
