@@ -34,6 +34,7 @@ export default function ShowInfo({
   const [shareOpen, setShareOpen] = useState(false);
   const [myListOpen, setMyListOpen] = useState(false);
   const [recordingOpen, setRecordingOpen] = useState(false);
+  const [showFullDescription, setShowFullDescription] = useState(false);
 
   const tabs = [
     { id: "general", label: "GENERAL" },
@@ -217,7 +218,8 @@ export default function ShowInfo({
           <div className="ml-auto">
             <div className="bg-white text-black text-xs sm:text-sm px-1 sm:px-2 my-1 font-bold tracking-wider">
               TELE
-              <br />
+            </div>
+            <div className="bg-black text-white text-xs sm:text-sm px-1 sm:px-2 my-1 font-bold tracking-wider">
               CINE
             </div>
           </div>
@@ -555,9 +557,17 @@ export default function ShowInfo({
                 <h3 className="text-sm uppercase tracking-wide mb-1 text-white/80">
                   SINOPSE
                 </h3>
-                <p className="text-base leading-relaxed overflow-hidden text-white/90">
-                  {show.description}
-                </p>
+                <div className="relative">
+                  <p className="text-base leading-relaxed overflow-hidden text-white/90 line-clamp-2">
+                    {show.description}
+                  </p>
+                  <button
+                    onClick={() => setShowFullDescription(true)}
+                    className="text-emerald-500 font-medium text-sm mt-1 hover:text-emerald-400 transition-colors"
+                  >
+                    Leer más
+                  </button>
+                </div>
               </div>
 
               {/* Mobile synopsis */}
@@ -565,10 +575,52 @@ export default function ShowInfo({
                 <h3 className="text-xs uppercase tracking-wide mb-1 text-white/80">
                   SINOPSE
                 </h3>
-                <p className="text-sm leading-tight text-white/90 line-clamp-3">
-                  {show.description}
-                </p>
+                <div className="relative">
+                  <p className="text-sm leading-tight text-white/90 line-clamp-2">
+                    {show.description}
+                  </p>
+                  <button
+                    onClick={() => setShowFullDescription(true)}
+                    className="text-emerald-500 font-medium text-xs mt-1 hover:text-emerald-400 transition-colors"
+                  >
+                    Leer más
+                  </button>
+                </div>
               </div>
+
+              {/* Full Description Overlay */}
+              <AnimatePresence>
+                {showFullDescription && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+                    onClick={() => setShowFullDescription(false)}
+                  >
+                    <motion.div
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: 20, opacity: 0 }}
+                      className="bg-gray-900 p-5 rounded-lg max-w-2xl mx-auto max-h-[80vh] overflow-y-auto"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <h2 className="text-lg font-medium mb-3 text-white/90">
+                        {show.title}
+                      </h2>
+                      <p className="text-base leading-relaxed text-white/90">
+                        {show.description}
+                      </p>
+                      <button
+                        onClick={() => setShowFullDescription(false)}
+                        className="mt-5 bg-emerald-600 text-white px-4 py-2 rounded-md text-sm hover:bg-emerald-700 transition-colors"
+                      >
+                        Cerrar
+                      </button>
+                    </motion.div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           )}
 
