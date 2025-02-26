@@ -6,7 +6,6 @@ import { useSeasonEpisodes } from "./hooks/useEpisodes";
 import { Episode } from "./types";
 import LoadingSpinner from "./components/LoadingSpinner";
 import EpisodeList from "./components/EpisodeList/index";
-// import ShowInfo from "./components/ShowInfo";
 import SeasonTabs from "./components/SeasonTabs";
 import { ShowInfo } from "./components/ShowInfo/index";
 
@@ -56,7 +55,9 @@ export default function Home() {
     return (
       <div className="h-screen bg-black text-white flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold">No Show Data Available</h1>
+          <h1 className="text-2xl font-bold">
+            Dados do Programa Indisponíveis
+          </h1>
         </div>
       </div>
     );

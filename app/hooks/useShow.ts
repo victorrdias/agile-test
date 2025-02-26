@@ -82,7 +82,7 @@ function transformShowData(
     releaseYear: response.Year,
     genre: response.Genres.map((g) => g.Title).join(", "),
     rating: "4.35 estrelas", // Hardcoded as it's not in the API
-    duration: `${seasonCount} Seasons`,
+    duration: `${seasonCount} Temporadas`,
     backgroundImage: response.Images.Background,
     seasons: seasonCount,
     cast: cast,
@@ -114,9 +114,11 @@ export function useShow() {
       } catch (error) {
         // Log error for debugging but throw for handling in UI
         if (error instanceof Error) {
-          throw new Error(`Failed to fetch show data: ${error.message}`);
+          throw new Error(
+            `Falha ao buscar dados do programa: ${error.message}`
+          );
         }
-        throw new Error("Failed to fetch show data: Unknown error");
+        throw new Error("Falha ao buscar dados do programa: Erro desconhecido");
       }
     },
   });

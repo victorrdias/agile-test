@@ -14,9 +14,9 @@ export const TabNavigation = ({
   onTabChange,
 }: TabNavigationProps) => {
   const tabs = [
-    { id: "general", label: "GENERAL" },
+    { id: "general", label: "GERAL" },
     { id: "elenco", label: "ELENCO" },
-    { id: "premios", label: "PREMIOS" },
+    { id: "premios", label: "PRÊMIOS" },
   ] as const;
 
   return (

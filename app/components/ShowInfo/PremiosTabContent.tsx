@@ -21,7 +21,7 @@ export const PremiosTabContent = ({ show }: PremiosTabContentProps) => {
           <h3 className="text-base font-medium text-white">{award.name}</h3>
           <p className="text-sm">{award.description}</p>
         </motion.div>
-      )) || <p>No hay premios registrados para esta serie.</p>}
+      )) || <p>Não há prêmios registrados para esta série.</p>}
     </div>
   );
 };

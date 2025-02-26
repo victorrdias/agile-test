@@ -74,7 +74,7 @@ export function useShowInfo({
     onSuccess: () => {
       setInMyList(true);
       setMyListOpen(false);
-      showToast(`${show.title} ha sido añadido a tu lista`, "success");
+      showToast(`${show.title} foi adicionado à sua lista`, "success");
       queryClient.invalidateQueries({ queryKey: ["myList"] });
     },
   });
@@ -88,7 +88,7 @@ export function useShowInfo({
     onSuccess: () => {
       setInMyList(false);
       setMyListOpen(false);
-      showToast(`${show.title} ha sido eliminado de tu lista`, "success");
+      showToast(`${show.title} foi removido da sua lista`, "success");
       queryClient.invalidateQueries({ queryKey: ["myList"] });
     },
   });
@@ -102,10 +102,7 @@ export function useShowInfo({
     onSuccess: (_, rating) => {
       setRatingValue(rating);
       setShowRating(false);
-      showToast(
-        `Has calificado ${show.title} con ${rating} estrellas`,
-        "rating"
-      );
+      showToast(`Você avaliou ${show.title} com ${rating} estrelas`, "rating");
     },
   });
 
@@ -118,7 +115,7 @@ export function useShowInfo({
     onSuccess: () => {
       setIsRecording(true);
       setRecordingOpen(false);
-      showToast(`${show.title} ha sido programado para grabar`, "recording");
+      showToast(`${show.title} foi programado para gravação`, "recording");
     },
   });
 
@@ -131,7 +128,7 @@ export function useShowInfo({
     onSuccess: () => {
       setIsRecording(false);
       setRecordingOpen(false);
-      showToast(`${show.title} ha sido cancelada la grabación`, "recording");
+      showToast(`A gravação de ${show.title} foi cancelada`, "recording");
     },
   });
 
@@ -143,7 +140,7 @@ export function useShowInfo({
     },
     onSuccess: (_, platform) => {
       setShareOpen(false);
-      showToast(`Compartido en ${platform}`, "sharing");
+      showToast(`Compartilhado no ${platform}`, "sharing");
     },
   });
 

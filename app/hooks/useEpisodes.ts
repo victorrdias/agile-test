@@ -73,9 +73,9 @@ export function useEpisodes() {
           .map(transformEpisodeData);
       } catch (error) {
         if (error instanceof Error) {
-          throw new Error(`Failed to fetch episodes: ${error.message}`);
+          throw new Error(`Falha ao buscar episódios: ${error.message}`);
         }
-        throw new Error("Failed to fetch episodes: Unknown error");
+        throw new Error("Falha ao buscar episódios: Erro desconhecido");
       }
     },
   });

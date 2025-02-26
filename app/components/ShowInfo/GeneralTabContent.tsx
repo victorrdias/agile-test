@@ -64,7 +64,7 @@ export const GeneralTabContent = ({
           >
             <div className="flex flex-col gap-2 items-center">
               <span className="text-white/90 text-xs sm:text-sm mb-1 sm:mb-2 text-center">
-                Añadir a tu lista:
+                Adicionar à sua lista:
               </span>
               <div className="flex gap-2 sm:gap-4">
                 <button
@@ -72,7 +72,7 @@ export const GeneralTabContent = ({
                   className="bg-emerald-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded text-xs flex items-center gap-2"
                 >
                   <PlusIcon className="w-3 h-3 sm:w-4 sm:h-4" />
-                  <span>Añadir a Mi Lista</span>
+                  <span>Adicionar à Minha Lista</span>
                 </button>
                 <button
                   onClick={onCloseFullDescription}
@@ -101,7 +101,7 @@ export const GeneralTabContent = ({
           >
             <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
               <span className="text-white/90 text-xs sm:text-sm">
-                Califica este título:
+                Avalie este título:
               </span>
               <div className="flex">
                 {[1, 2, 3, 4, 5].map((star) => (
@@ -140,7 +140,7 @@ export const GeneralTabContent = ({
           >
             <div className="flex flex-col gap-2 items-center">
               <span className="text-white/90 text-xs sm:text-sm mb-1 sm:mb-2 text-center">
-                Programar grabación:
+                Programar gravação:
               </span>
               <div className="flex gap-2 sm:gap-4">
                 <button
@@ -161,7 +161,7 @@ export const GeneralTabContent = ({
                       d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z"
                     />
                   </svg>
-                  <span>Programar Grabación</span>
+                  <span>Programar Gravação</span>
                 </button>
                 <button
                   onClick={onCloseFullDescription}
@@ -190,7 +190,7 @@ export const GeneralTabContent = ({
           >
             <div className="flex flex-col gap-2">
               <span className="text-white/90 text-xs sm:text-sm mb-1 sm:mb-2 text-center">
-                Compartir con:
+                Compartilhar com:
               </span>
               <div className="flex gap-2 sm:gap-4">
                 <button
@@ -230,7 +230,7 @@ export const GeneralTabContent = ({
             onClick={onShowFullDescription}
             className="text-emerald-500 font-medium text-sm mt-1 hover:text-emerald-400 transition-colors"
           >
-            Leer más
+            Ler mais
           </button>
         </div>
       </div>
@@ -248,7 +248,7 @@ export const GeneralTabContent = ({
             onClick={onShowFullDescription}
             className="text-emerald-500 font-medium text-xs mt-1 hover:text-emerald-400 transition-colors"
           >
-            Leer más
+            Ler mais
           </button>
         </div>
       </div>
@@ -267,7 +267,7 @@ export const GeneralTabContent = ({
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 20, opacity: 0 }}
-              className="bg-gray-900 p-5 rounded-lg max-w-2xl mx-auto max-h-[80vh] overflow-y-auto"
+              className="bg-black p-5 rounded-lg max-w-2xl mx-auto max-h-[80vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               <h2 className="text-lg font-medium mb-3 text-white/90">
@@ -280,7 +280,7 @@ export const GeneralTabContent = ({
                 onClick={onCloseFullDescription}
                 className="mt-5 bg-emerald-600 text-white px-4 py-2 rounded-md text-sm hover:bg-emerald-700 transition-colors"
               >
-                Cerrar
+                Fechar
               </button>
             </motion.div>
           </motion.div>

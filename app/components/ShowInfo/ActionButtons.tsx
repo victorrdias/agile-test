@@ -46,7 +46,7 @@ export const ActionButtons = ({
           )}
         </div>
         <span className="text-[10px] sm:text-xs font-medium tracking-wide">
-          Mi Lista
+          Minha Lista
         </span>
       </motion.button>
 
@@ -70,7 +70,7 @@ export const ActionButtons = ({
           />
         </div>
         <span className="text-[10px] sm:text-xs font-medium tracking-wide">
-          Evaluar
+          Avaliar
         </span>
       </motion.button>
 
@@ -101,7 +101,7 @@ export const ActionButtons = ({
           </svg>
         </div>
         <span className="text-[10px] sm:text-xs font-medium tracking-wide">
-          Grabar
+          Gravar
         </span>
       </motion.button>
 
@@ -132,7 +132,7 @@ export const ActionButtons = ({
           </svg>
         </div>
         <span className="text-[10px] sm:text-xs font-medium tracking-wide">
-          Compartir
+          Compartilhar
         </span>
       </motion.button>
     </div>
