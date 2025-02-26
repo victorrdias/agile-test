@@ -38,7 +38,10 @@ export const EpisodeDetails = ({ episode, show }: EpisodeDetailsProps) => {
               alt={episode.title}
               fill
               className="object-cover"
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
           </motion.div>
           <div className="absolute bottom-0 left-0 right-0 h-1 md:h-1.5 bg-black/30">
             <motion.div
