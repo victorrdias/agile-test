@@ -85,12 +85,12 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="absolute right-0 top-0 bottom-0 w-full sm:w-[80%] md:w-[600px] flex flex-col pointer-events-auto z-20 transform transition-transform duration-300 ease-in-out">
+        <div className="absolute right-0 top-0 bottom-0 w-full sm:w-[80%] md:w-[600px] flex flex-col pointer-events-auto z-20 transform transition-transform duration-300 ease-in-out touch-auto">
           <div className="absolute top-3 sm:top-4 md:top-6 right-3 sm:right-4 md:right-6 z-40">
             <CloseButton />
           </div>
 
-          <div className="h-full flex flex-col">
+          <div className="h-full flex flex-col overflow-hidden">
             <div className="flex justify-between items-center px-2 sm:px-3 md:px-4 py-2 sm:py-3 md:py-4 mt-10 sm:mt-12 md:mt-14">
               <div className="px-4 sm:px-8 md:px-14 mt-20  lg:mt-0">
                 <SeasonTabs
@@ -101,7 +101,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex-1 overflow-y-auto px-4 sm:px-10 md:px-20 pb-[200px] sm:pb-[220px] md:pb-[250px]">
+            <div className="flex-1 overflow-y-auto overflow-x-hidden scrollbar-hide px-4 sm:px-10 md:px-20 pb-[350px] sm:pb-[220px] md:pb-[250px] touch-auto -webkit-overflow-scrolling-touch">
               <EpisodeList
                 episodes={episodes || []}
                 onEpisodeClick={setSelectedEpisode}
