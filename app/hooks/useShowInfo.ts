@@ -9,7 +9,6 @@ import {
   scrollCarousel,
 } from "../lib/utils/uiUtils";
 
-// Toast types with their associated colors
 export interface ToastData {
   message: string;
   visible: boolean;
@@ -29,10 +28,8 @@ export function useShowInfo({
 }: UseShowInfoProps) {
   const queryClient = useQueryClient();
 
-  // State for tabs
   const [activeTab, setActiveTab] = useState<ActiveTab>(initialTab);
 
-  // State for button functionality
   const [inMyList, setInMyList] = useState(false);
   const [showRating, setShowRating] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
@@ -42,19 +39,16 @@ export function useShowInfo({
   const [recordingOpen, setRecordingOpen] = useState(false);
   const [showFullDescription, setShowFullDescription] = useState(false);
 
-  // Reference for carousel
   const carouselRef = useRef<HTMLDivElement>(null);
   const [showLeftNav, setShowLeftNav] = useState(false);
   const [showRightNav, setShowRightNav] = useState(false);
 
-  // Toast notification
   const [toast, setToast] = useState<ToastData>({
     message: "",
     visible: false,
     type: "info",
   });
 
-  // Close all popups
   const closeAllPopups = () => {
     setShowRating(false);
     setShareOpen(false);
@@ -62,16 +56,13 @@ export function useShowInfo({
     setRecordingOpen(false);
   };
 
-  // Show toast notification
   const showToast = (message: string, type: ToastType = "info") => {
     setToast({ message, visible: true, type });
     setTimeout(() => setToast((prev) => ({ ...prev, visible: false })), 3000);
   };
 
-  // Add to my list mutation
   const addToMyListMutation = useMutation({
     mutationFn: async () => {
-      // In a real app, this would call an API
       return { success: true, showId: show.id };
     },
     onSuccess: () => {
@@ -82,10 +73,8 @@ export function useShowInfo({
     },
   });
 
-  // Remove from my list mutation
   const removeFromMyListMutation = useMutation({
     mutationFn: async () => {
-      // In a real app, this would call an API
       return { success: true, showId: show.id };
     },
     onSuccess: () => {
@@ -96,10 +85,8 @@ export function useShowInfo({
     },
   });
 
-  // Save rating mutation
   const saveRatingMutation = useMutation({
     mutationFn: async (rating: number) => {
-      // In a real app, this would call an API
       return { success: true, showId: show.id, rating };
     },
     onSuccess: (_, rating) => {
@@ -109,10 +96,8 @@ export function useShowInfo({
     },
   });
 
-  // Start recording mutation
   const startRecordingMutation = useMutation({
     mutationFn: async () => {
-      // In a real app, this would call an API
       return { success: true, showId: show.id };
     },
     onSuccess: () => {
@@ -122,10 +107,8 @@ export function useShowInfo({
     },
   });
 
-  // Cancel recording mutation
   const cancelRecordingMutation = useMutation({
     mutationFn: async () => {
-      // In a real app, this would call an API
       return { success: true, showId: show.id };
     },
     onSuccess: () => {
@@ -135,10 +118,8 @@ export function useShowInfo({
     },
   });
 
-  // Share show mutation
   const shareShowMutation = useMutation({
     mutationFn: async (platform: string) => {
-      // In a real app, this would call an API
       return { success: true, showId: show.id, platform };
     },
     onSuccess: (_, platform) => {
@@ -147,7 +128,6 @@ export function useShowInfo({
     },
   });
 
-  // Check if carousel scroll buttons should be visible
   const checkScrollButtons = () => {
     if (!carouselRef.current) return;
     setShowLeftNav(carouselRef.current.scrollLeft > 10);
@@ -157,12 +137,10 @@ export function useShowInfo({
     );
   };
 
-  // Function to scroll the carousel
   const handleScrollCarousel = (direction: "left" | "right") => {
     scrollCarousel(carouselRef, direction, checkScrollButtons);
   };
 
-  // Handlers for UI interactions
   const handleMyListClick = () => {
     closeAllPopups();
     setMyListOpen(true);
@@ -206,13 +184,10 @@ export function useShowInfo({
   const handleSharePlatform = (platform: string) => {
     shareShowMutation.mutate(platform);
   };
-
-  // Check for overflow on mount and tab change
   useEffect(() => {
     if (activeTab === "elenco") {
       setTimeout(checkScrollButtons, 100);
 
-      // Add resize listener to recheck when window size changes
       window.addEventListener("resize", checkScrollButtons);
       return () => window.removeEventListener("resize", checkScrollButtons);
     }

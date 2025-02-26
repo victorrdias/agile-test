@@ -46,10 +46,8 @@ export const GeneralTabContent = ({
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.2 }}
     >
-      {/* Action buttons - left side */}
       {actionButtons}
 
-      {/* Mi Lista panel */}
       <AnimatePresence>
         {myListOpen && (
           <motion.div
@@ -86,7 +84,6 @@ export const GeneralTabContent = ({
         )}
       </AnimatePresence>
 
-      {/* Rating panel */}
       <AnimatePresence>
         {showRating && (
           <motion.div
@@ -125,7 +122,6 @@ export const GeneralTabContent = ({
         )}
       </AnimatePresence>
 
-      {/* Recording panel */}
       <AnimatePresence>
         {recordingOpen && (
           <motion.div
@@ -175,7 +171,6 @@ export const GeneralTabContent = ({
         )}
       </AnimatePresence>
 
-      {/* Share panel */}
       <AnimatePresence>
         {shareOpen && (
           <motion.div
@@ -217,7 +212,6 @@ export const GeneralTabContent = ({
         )}
       </AnimatePresence>
 
-      {/* Synopsis section - right side */}
       <div className="hidden sm:block ml-auto max-w-[50%]">
         <h3 className="text-sm uppercase tracking-wide mb-1 text-white/80">
           SINOPSE
@@ -253,7 +247,6 @@ export const GeneralTabContent = ({
         </div>
       </div>
 
-      {/* Full Description Overlay */}
       <AnimatePresence>
         {showFullDescription && (
           <motion.div
