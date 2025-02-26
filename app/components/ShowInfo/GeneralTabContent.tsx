@@ -213,9 +213,9 @@ export const GeneralTabContent = ({
       </AnimatePresence>
 
       <div className="hidden sm:block ml-auto max-w-[50%]">
-        <h3 className="text-sm uppercase tracking-wide mb-1 text-white/80">
+        <h2 className="text-sm uppercase tracking-wide mb-1 text-white/80">
           SINOPSE
-        </h3>
+        </h2>
         <div className="relative">
           <p className="text-base leading-relaxed overflow-hidden text-white/90 line-clamp-2">
             {show.description}
@@ -231,9 +231,9 @@ export const GeneralTabContent = ({
 
       {/* Mobile synopsis */}
       <div className="sm:hidden w-full mt-1">
-        <h3 className="text-xs uppercase tracking-wide mb-1 text-white/80">
+        <h2 className="text-xs uppercase tracking-wide mb-1 text-white/80">
           SINOPSE
-        </h3>
+        </h2>
         <div className="relative">
           <p className="text-sm leading-tight text-white/90 line-clamp-2">
             {show.description}

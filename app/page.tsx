@@ -11,12 +11,17 @@ import { ShowInfo } from "./components/ShowInfo/index";
 import { motion } from "framer-motion";
 
 const CloseButton = ({ onClick }: { onClick: () => void }) => (
-  <button className="text-white/80 hover:text-white" onClick={onClick}>
+  <button
+    className="text-white/80 hover:text-white"
+    onClick={onClick}
+    aria-label="Fechar lista de episódios"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
       viewBox="0 0 20 20"
       fill="currentColor"
+      aria-hidden="true"
     >
       <path
         fillRule="evenodd"
@@ -28,12 +33,17 @@ const CloseButton = ({ onClick }: { onClick: () => void }) => (
 );
 
 const HamburgerButton = ({ onClick }: { onClick: () => void }) => (
-  <button className="text-white/80 hover:text-white" onClick={onClick}>
+  <button
+    className="text-white/80 hover:text-white"
+    onClick={onClick}
+    aria-label="Abrir lista de episódios"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
       viewBox="0 0 20 20"
       fill="currentColor"
+      aria-hidden="true"
     >
       <path
         fillRule="evenodd"

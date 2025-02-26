@@ -32,6 +32,7 @@ export const ElencoTabContent = ({
           animate={{ opacity: 1 }}
           className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/60 rounded-full p-1 hover:bg-black/80"
           onClick={onScrollLeft}
+          aria-label="Navegar para a esquerda"
         >
           <ChevronLeftIcon className="h-8 w-8 text-white" />
         </motion.button>
@@ -68,6 +69,7 @@ export const ElencoTabContent = ({
           animate={{ opacity: 1 }}
           className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-black/60 rounded-full p-1 hover:bg-black/80"
           onClick={onScrollRight}
+          aria-label="Navegar para a direita"
         >
           <ChevronRightIcon className="h-8 w-8 text-white" />
         </motion.button>
