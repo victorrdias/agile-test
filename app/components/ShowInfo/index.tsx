@@ -4,7 +4,8 @@ import { Show } from "../../types";
 import { AnimatePresence } from "framer-motion";
 import { TabNavigation } from "./TabNavigation";
 import { TabContent } from "./TabContent";
-import { useShowInfo, ActiveTab, ToastType } from "../../hooks/useShowInfo";
+import { useShowInfo, ActiveTab } from "../../hooks/useShowInfo";
+import { ToastType } from "../../lib/utils/uiUtils";
 
 interface ShowInfoProps {
   show: Show;

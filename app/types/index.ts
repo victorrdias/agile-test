@@ -32,7 +32,6 @@ export interface EpisodeResponse {
   Title: string;
 }
 
-// Transformed types for our UI
 export interface TVShow {
   id: string;
   title: string;

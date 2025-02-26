@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ToastType } from "../../hooks/useShowInfo";
+import { ToastType } from "../../lib/utils/uiUtils";
 
 interface ToastNotificationProps {
   message: string;

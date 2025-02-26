@@ -26,7 +26,6 @@ export const ElencoTabContent = ({
 }: ElencoTabContentProps) => {
   return (
     <div className="relative w-full">
-      {/* Left Navigation Button */}
       {showLeftNav && (
         <motion.button
           initial={{ opacity: 0 }}
@@ -38,7 +37,6 @@ export const ElencoTabContent = ({
         </motion.button>
       )}
 
-      {/* Cast List */}
       <div
         ref={carouselRef}
         className="overflow-x-auto scrollbar-hide py-5 px-8"
@@ -64,7 +62,6 @@ export const ElencoTabContent = ({
         </div>
       </div>
 
-      {/* Right Navigation Button */}
       {showRightNav && (
         <motion.button
           initial={{ opacity: 0 }}

@@ -3,10 +3,13 @@
 import { useState, useEffect, useRef } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Show } from "../types";
+import {
+  getToastBgColor,
+  ToastType,
+  scrollCarousel,
+} from "../lib/utils/uiUtils";
 
 // Toast types with their associated colors
-export type ToastType = "success" | "rating" | "recording" | "sharing" | "info";
-
 export interface ToastData {
   message: string;
   visible: boolean;
@@ -155,23 +158,8 @@ export function useShowInfo({
   };
 
   // Function to scroll the carousel
-  const scrollCarousel = (direction: "left" | "right") => {
-    if (!carouselRef.current) return;
-
-    const scrollAmount = 280; // Approximate width of 3 cards
-    const currentScroll = carouselRef.current.scrollLeft;
-    const newScroll =
-      direction === "left"
-        ? currentScroll - scrollAmount
-        : currentScroll + scrollAmount;
-
-    carouselRef.current.scrollTo({
-      left: newScroll,
-      behavior: "smooth",
-    });
-
-    // Update navigation buttons visibility after scroll
-    setTimeout(checkScrollButtons, 300);
+  const handleScrollCarousel = (direction: "left" | "right") => {
+    scrollCarousel(carouselRef, direction, checkScrollButtons);
   };
 
   // Handlers for UI interactions
@@ -250,7 +238,7 @@ export function useShowInfo({
 
     // Actions
     setActiveTab,
-    scrollCarousel,
+    scrollCarousel: handleScrollCarousel,
     closeAllPopups,
     handleMyListClick,
     handleAddToList,
@@ -265,20 +253,6 @@ export function useShowInfo({
     setShowFullDescription,
     checkScrollButtons,
 
-    // Helper functions
-    getToastBgColor: (type: ToastType) => {
-      switch (type) {
-        case "success":
-          return "bg-emerald-600";
-        case "rating":
-          return "bg-yellow-500";
-        case "recording":
-          return "bg-red-600";
-        case "sharing":
-          return "bg-blue-600";
-        default:
-          return "bg-gray-800";
-      }
-    },
+    getToastBgColor,
   };
 }

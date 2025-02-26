@@ -20,7 +20,6 @@ export const EpisodeList = ({
   isLoading = false,
   selectedEpisode: externalSelectedEpisode,
 }: EpisodeListProps) => {
-  // Use the custom hook to handle state and business logic
   const { selectedEpisode, showDetails, handleEpisodeClick } = useEpisodeList({
     episodes,
     initialSelectedEpisode: externalSelectedEpisode,
@@ -59,7 +58,6 @@ export const EpisodeList = ({
             onEpisodeClick={handleEpisodeClick}
           />
 
-          {/* Only show details for selected episode */}
           <AnimatePresence>
             {selectedEpisode?.id === episode.id && (
               <EpisodeDetails episode={episode} show={showDetails} />
@@ -71,5 +69,4 @@ export const EpisodeList = ({
   );
 };
 
-// Export for backward compatibility
 export default EpisodeList;

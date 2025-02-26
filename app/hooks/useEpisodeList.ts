@@ -10,20 +10,17 @@ interface UseEpisodeListProps {
   onEpisodeSelect?: (episode: Episode) => void;
 }
 
-export function useEpisodeList({
+export const useEpisodeList = ({
   episodes,
   initialSelectedEpisode = null,
   onEpisodeSelect,
-}: UseEpisodeListProps) {
-  // Track the selected episode
+}: UseEpisodeListProps) => {
   const [selectedEpisode, setSelectedEpisode] = useState<Episode | null>(
     initialSelectedEpisode
   );
 
-  // Track if we're showing content to handle animations
   const [showDetails, setShowDetails] = useState(false);
 
-  // When selected episode changes, handle animation
   useEffect(() => {
     if (selectedEpisode) {
       setShowDetails(true);
@@ -32,7 +29,6 @@ export function useEpisodeList({
     }
   }, [selectedEpisode]);
 
-  // Function to handle episode click
   const handleEpisodeClick = (episode: Episode) => {
     setSelectedEpisode(episode);
     if (onEpisodeSelect) {
@@ -40,18 +36,14 @@ export function useEpisodeList({
     }
   };
 
-  // Query for episodes data - useful if you want to fetch this data dynamically
   const episodesQuery = useQuery({
     queryKey: ["episodes"],
     queryFn: async () => {
-      // This is a mock implementation - in a real app, you would fetch from an API
-      // In this case, we're just returning the episodes passed as props
       return episodes;
     },
-    enabled: false, // Disabled by default as we're using props for now
+    enabled: false,
   });
 
-  // Update selected episode if initialSelectedEpisode changes
   useEffect(() => {
     if (initialSelectedEpisode) {
       setSelectedEpisode(initialSelectedEpisode);
@@ -59,15 +51,10 @@ export function useEpisodeList({
   }, [initialSelectedEpisode]);
 
   return {
-    // State
     selectedEpisode,
     showDetails,
-
-    // Actions
     handleEpisodeClick,
     setSelectedEpisode,
-
-    // Query results
     episodesQuery,
   };
-}
+};
