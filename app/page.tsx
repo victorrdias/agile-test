@@ -8,9 +8,10 @@ import LoadingSpinner from "./components/LoadingSpinner";
 import EpisodeList from "./components/EpisodeList/index";
 import SeasonTabs from "./components/SeasonTabs";
 import { ShowInfo } from "./components/ShowInfo/index";
+import { motion } from "framer-motion";
 
-const CloseButton = () => (
-  <button className="text-white/80 hover:text-white">
+const CloseButton = ({ onClick }: { onClick: () => void }) => (
+  <button className="text-white/80 hover:text-white" onClick={onClick}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
@@ -26,9 +27,27 @@ const CloseButton = () => (
   </button>
 );
 
+const HamburgerButton = ({ onClick }: { onClick: () => void }) => (
+  <button className="text-white/80 hover:text-white" onClick={onClick}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+    >
+      <path
+        fillRule="evenodd"
+        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+        clipRule="evenodd"
+      />
+    </svg>
+  </button>
+);
+
 export default function Home() {
   const [selectedSeason, setSelectedSeason] = useState<number>(1);
   const [selectedEpisode, setSelectedEpisode] = useState<Episode | null>(null);
+  const [showEpisodeList, setShowEpisodeList] = useState<boolean>(true);
 
   const { data: show, isLoading: isLoadingShow } = useShow();
   const { data: episodes, isLoading: isLoadingEpisodes } =
@@ -37,6 +56,10 @@ export default function Home() {
   const handleSeasonChange = (season: number) => {
     setSelectedSeason(season);
     setSelectedEpisode(null);
+  };
+
+  const toggleEpisodeList = () => {
+    setShowEpisodeList(!showEpisodeList);
   };
 
   if (isLoadingShow) {
@@ -85,9 +108,14 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="absolute right-0 top-0 bottom-0 w-full sm:w-[80%] md:w-[600px] flex flex-col pointer-events-auto z-20 transform transition-transform duration-300 ease-in-out touch-auto">
+        <motion.div
+          className="absolute right-0 top-0 bottom-0 w-full sm:w-[80%] md:w-[600px] flex flex-col pointer-events-auto z-20 touch-auto"
+          initial={{ x: 0 }}
+          animate={{ x: showEpisodeList ? 0 : "100%" }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+        >
           <div className="absolute top-3 sm:top-4 md:top-6 right-3 sm:right-4 md:right-6 z-40">
-            <CloseButton />
+            <CloseButton onClick={toggleEpisodeList} />
           </div>
 
           <div className="h-full flex flex-col overflow-hidden">
@@ -110,7 +138,13 @@ export default function Home() {
               />
             </div>
           </div>
-        </div>
+        </motion.div>
+
+        {!showEpisodeList && (
+          <div className="absolute top-3 sm:top-4 md:top-6 right-3 sm:right-4 md:right-6 z-40">
+            <HamburgerButton onClick={toggleEpisodeList} />
+          </div>
+        )}
       </div>
     </main>
   );
