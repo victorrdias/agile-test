@@ -40,5 +40,7 @@ export const generateProgressValue = (
   seasonNumber: number,
   episodeNumber: number
 ): number => {
+  //this function emulates a progress bar that depends on the episode number, for demo purposes.
+  //for professional implementation this data will came from API.
   return Math.min(episodeNumber / 10 + 0.1, 1);
 };

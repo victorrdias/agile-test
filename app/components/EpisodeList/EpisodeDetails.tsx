@@ -40,7 +40,6 @@ export const EpisodeDetails = ({ episode, show }: EpisodeDetailsProps) => {
               className="object-cover"
             />
           </motion.div>
-          {/* Progress bar */}
           <div className="absolute bottom-0 left-0 right-0 h-1 md:h-1.5 bg-black/30">
             <motion.div
               className="h-full bg-emerald-500"
