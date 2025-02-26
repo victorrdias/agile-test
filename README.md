@@ -44,8 +44,8 @@ This is a modern, responsive web application for displaying comprehensive TV sho
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/tv-show-details.git
-cd tv-show-details
+git clone https://github.com/victorrdias/agile-test
+cd agile-test
 ```
 
 2. Install dependencies:
@@ -70,24 +70,6 @@ yarn dev
 
 ```
 http://localhost:3000
-```
-
-## 🏗️ Building for Production
-
-1. Create a production build:
-
-```bash
-npm run build
-# or
-yarn build
-```
-
-2. Start the production server:
-
-```bash
-npm start
-# or
-yarn start
 ```
 
 ## 📁 Project Structure
@@ -123,7 +105,3 @@ The application is fully responsive and optimized for:
 - Mobile devices (portrait and landscape)
 - Tablets
 - Desktops and large displays
-
-## 📄 License
-
-MIT
